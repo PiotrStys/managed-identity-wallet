@@ -5,6 +5,9 @@ on:
     paths-ignore:
       - '**/*.md'
       - '**/*.txt'
+  workflow_dispatch:
+  # Trigger manually
+  
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
