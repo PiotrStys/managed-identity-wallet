@@ -1,7 +1,10 @@
 name: DAST
 on:
-  workflow_call:
-
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
