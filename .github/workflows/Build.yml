@@ -22,10 +22,11 @@ jobs:
     # Set GitHub secrets as environment variables
     - name: Set GitHub Secrets
       env:
-        GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_USERNAME: ${{ secrets.GH_USERNAME }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
     # Show the GitHub secrets (for debugging purposes, remove or comment this line later)
-    - run: echo "GitHub username: $GH_USERNAME, GitHub token: $GH_TOKEN"
+    - name: Display GitHub Secrets
+      run: echo "GitHub username: $GH_USERNAME, GitHub token: $GH_TOKEN"
     # Compile with Gradle
     - name: Build with Gradle
       run: ./gradlew build --no-daemon
