@@ -11,15 +11,16 @@ on:
     branches: [ "main" ]
   schedule:
     - cron: '0 0 * * 5'
+
 jobs:
-   build:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Build the project
-      uses: ./.github/workflows # Assuming Build.yml is located under ./.github/workflows directory
-      with:
-        GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Call Build Workflow
+        uses: ./.github/workflows # Assuming Build.yml is located under ./.github/workflows directory
+        with:
+          GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
