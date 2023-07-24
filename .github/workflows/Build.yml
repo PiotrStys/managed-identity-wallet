@@ -19,9 +19,11 @@ jobs:
         java-version: '18'
         distribution: 'temurin'
         cache: gradle
-    # Set the GitHub access token as an environment variable
-    - name: Set GitHub Access Token
-      run: echo "GRADLE_OPTS=-Dorg.gradle.internal.http.auth.username=${{ secrets.GITHUB_ACTOR }} -Dorg.gradle.internal.http.auth.password=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+    # Set GitHub secrets as environment variables
+    - name: Set GitHub Secrets
+      env:
+        GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     # Compile with Gradle
     - name: Build with Gradle
       run: ./gradlew build --no-daemon
