@@ -24,6 +24,8 @@ jobs:
       env:
         GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # Show the GitHub secrets (for debugging purposes, remove or comment this line later)
+    - run: echo "GitHub username: $GITHUB_USERNAME, GitHub token: $GITHUB_TOKEN"
     # Compile with Gradle
     - name: Build with Gradle
       run: ./gradlew build --no-daemon
