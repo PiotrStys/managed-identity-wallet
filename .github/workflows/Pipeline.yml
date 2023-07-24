@@ -13,13 +13,9 @@ on:
     - cron: '0 0 * * 5'
 
 jobs:
-  build:
+  Build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Trigger Build Workflow
-        uses: ./.github/workflows/Build.yml
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Include Build Workflow
+      uses: ./.github/workflows/Build.yml@main
