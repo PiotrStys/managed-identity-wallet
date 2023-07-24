@@ -20,15 +20,15 @@ jobs:
       with:
         java-version: '18'
         distribution: 'temurin'
-        cache: maven
+        cache: gradle # Change this line to cache Gradle dependencies
     # compile
-    - name: Build with Maven
-      run: mvn clean package -B -Dmaven.test.skip
-    - run: mkdir candidate-binary && cp target/*.jar candidate-binary
+    - name: Build with Gradle
+      run: ./gradlew build --no-daemon # Modify this line to use Gradle wrapper instead of Maven
+    - run: mkdir candidate-binary && cp build/libs/*.jar candidate-binary
     # test
-    - name: Test with Maven
-      run: mvn test
-    - run: mkdir test-results && cp target/*-reports/TEST-*.xml test-results
+    - name: Test with Gradle
+      run: ./gradlew test --no-daemon # Modify this line to use Gradle wrapper instead of Maven
+    - run: mkdir test-results && cp build/test-results/test/*/*.xml test-results
     - uses: actions/upload-artifact@v3
       with:
         name: Application-Binary
