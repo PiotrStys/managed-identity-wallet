@@ -4,14 +4,12 @@ on:
   workflow_call:
 
 jobs:
-  #name of job, free choice, could also give a name
   build:
     permissions:
       packages: write
       actions: read
       contents: read
       security-events: write
-    #runner
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -20,11 +18,13 @@ jobs:
       with:
         java-version: '18'
         distribution: 'temurin'
-        cache: gradle # Change this line to cache Gradle dependencies
-    # compile
+        cache: gradle
+    # Set the GitHub access token as an environment variable
+    - name: Set GitHub Access Token
+      run: echo "GRADLE_OPTS=-Dorg.gradle.internal.http.auth.username=${{ secrets.GITHUB_ACTOR }} -Dorg.gradle.internal.http.auth.password=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+    # Compile with Gradle
     - name: Build with Gradle
-      run: ./gradlew build --no-daemon # Modify this line to use Gradle wrapper instead of Maven
-    - run: mkdir candidate-binary && cp build/libs/*.jar candidate-binary
+      run: ./gradlew build --no-daemon
     # test
     - name: Test with Gradle
       run: ./gradlew test --no-daemon # Modify this line to use Gradle wrapper instead of Maven
