@@ -127,7 +127,10 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
           cache: gradle
-      - run: ./gradlew clean assemble --no-daemon
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
+        with:
+          arguments: build -PgithubToken=${{ secrets.GITHUB_TOKEN }}
       - name: Run Semgrep
         run: semgrep ci -v -o results.sarif --sarif || true
         env:
