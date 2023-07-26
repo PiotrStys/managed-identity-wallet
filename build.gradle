@@ -23,7 +23,7 @@ repositories {
 	}
 	maven { url 'https://jitpack.io' }
 	maven {
-		url = uri("https://maven.pkg.github.com/catenax-ng/product-lab-ssi")
+		url = uri("https://maven.pkg.github.com/RoKrish14/managed-identity-wallet")
 		credentials {
 			username = "${githubUserName}"
 			password = "${githubToken}"
