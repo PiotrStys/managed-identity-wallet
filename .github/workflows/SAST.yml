@@ -104,6 +104,8 @@ jobs:
       uses: github/codeql-action/upload-sarif@v2.1.28
       with:
         sarif_file: ${{github.workspace}}/results.sarif
+    - name: Debug Workspace Contents
+      run: ls -R ${{github.workspace}}
 
   semgrep:
     needs: [CodeQL]
