@@ -24,7 +24,9 @@ jobs:
           cache: gradle
 
       - name: Build with Gradle
-        run: ./gradlew build --no-daemon
+        uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
+        with:
+          arguments: build -PgithubToken=${{ secrets.GITHUB_TOKEN }}
 
       - run: mkdir candidate-binary && cp build/libs/*.jar candidate-binary
 
