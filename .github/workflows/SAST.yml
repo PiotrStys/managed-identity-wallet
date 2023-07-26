@@ -115,12 +115,20 @@ jobs:
       security-events: write
    
     container:
-      image: returntocorp/semgrep
+      image: adoptopenjdk:17-jdk-hotspot
 
     if: (github.actor != 'dependabot[bot]')
 
     steps:
       - uses: actions/checkout@v3
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
