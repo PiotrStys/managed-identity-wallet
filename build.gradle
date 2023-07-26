@@ -25,8 +25,8 @@ repositories {
 	maven {
 		url = uri("https://maven.pkg.github.com/RoKrish14/managed-identity-wallet")
 		credentials {
-			username = "${githubUserName}"
-			password = "${githubToken}"
+			username = "${GH_USERNAME}"
+			password = "${GH_TOKEN}"
 		}
 	}
 }
