@@ -8,8 +8,13 @@ on:
   workflow_dispatch:
   
 jobs:
-  build:
-    name: Build
+  service-build:
+    name: service-build
     uses: ./.github/workflows/service-build.yml
     secrets: inherit #https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idsecretsinherit
  
+  SAST:
+    needs: service-build
+    name: SAST
+    uses: ./.github/workflows/SAST.yml
+    secrets: inherit
