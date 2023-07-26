@@ -127,6 +127,9 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
           cache: gradle
+      - name: Debug Environment
+        run: java -version
+        
       - name: Build with Gradle
         uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
         with:
