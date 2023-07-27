@@ -104,9 +104,7 @@ jobs:
       uses: github/codeql-action/upload-sarif@v2.1.28
       with:
         sarif_file: ${{github.workspace}}/results.sarif
-    - name: Debug Workspace Contents
-      run: ls -R ${{github.workspace}}
-
+    
   semgrep:
     needs: [CodeQL]
     name: Semgrep
@@ -115,9 +113,9 @@ jobs:
       actions: read
       contents: read
       security-events: write
-    
+
     container:
-      # A Docker image with Semgrep installed. Do not change this.
+    # A Docker image with Semgrep installed. Do not change this.
       image: returntocorp/semgrep
       
     steps:
@@ -152,10 +150,10 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: semgrep.sarif
-        path: ${{github.workspace}}/results1.sarif
+        path: ${{github.workspace}}/results.sarif
 
     - name: Upload analysis results to GitHub Security tab
       if: always()
       uses: github/codeql-action/upload-sarif@v2.1.28
       with:
-        sarif_file: ${{github.workspace}}/results1.sarif
+        sarif_file: ${{github.workspace}}/results.sarif
