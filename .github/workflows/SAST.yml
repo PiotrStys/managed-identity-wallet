@@ -115,7 +115,11 @@ jobs:
       actions: read
       contents: read
       security-events: write
-   
+    
+    container:
+      # A Docker image with Semgrep installed. Do not change this.
+      image: returntocorp/semgrep
+      
     steps:
     - uses: actions/checkout@v3
 
@@ -138,7 +142,7 @@ jobs:
       uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
       with:
         arguments: build -PgithubToken=${{ secrets.GITHUB_TOKEN }}
-
+    
     - name: Run Semgrep
       run: semgrep ci -v -o results.sarif --sarif || true
       env:
