@@ -1,7 +1,7 @@
 name: DAST
 on:
   workflow_call:
-
+  
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
