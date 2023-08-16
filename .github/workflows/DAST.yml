@@ -1,6 +1,11 @@
 name: DAST
 on:
-  workflow_call:
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
+  pull_request:
 
 jobs:
   zap_scan:
