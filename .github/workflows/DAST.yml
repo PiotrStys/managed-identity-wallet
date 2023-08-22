@@ -27,5 +27,5 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
           cmd_options: '-swagger https://managed-identity-wallets-new.int.demo.catena-x.net/ui/swagger-ui/index.html'
-          #target: 'https://managed-identity-wallets-new.int.demo.catena-x.net/ui/swagger-ui/index.html'
+          target: 'https://managed-identity-wallets-new.int.demo.catena-x.net'
   
