@@ -38,3 +38,4 @@ jobs:
           #MIW:
           #target: 'https://managed-identity-wallets-new.int.demo.catena-x.net/docs/api-docs/docs
           target: 'https://raw.githubusercontent.com/PiotrStys/managed-identity-wallet/main/.github/workflows/openapi_Knowledge_Agents.json'
+          cmd_options: '-O'
