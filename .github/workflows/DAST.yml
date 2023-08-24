@@ -15,6 +15,9 @@ jobs:
       contents: read
       security-events: write
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./github/workflows
     name: OWASP ZAP
     steps:
       - name: Checkout
@@ -38,4 +41,4 @@ jobs:
           cmd_options: '-O knowledge.dev.demo.catena-x.net'
           #MIW:
           #target: 'https://managed-identity-wallets-new.int.demo.catena-x.net/docs/api-docs/docs
-          target: 'https://raw.githubusercontent.com/PiotrStys/managed-identity-wallet/main/.github/workflows/openapi_Knowledge_Agents.json'
+          target: openapi_Knowledge_Agents.json
