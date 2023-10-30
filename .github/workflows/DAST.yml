@@ -30,7 +30,7 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
-          #cmd_options: '-swagger https://managed-identity-wallets-new.int.demo.catena-x.net/ui/swagger-ui/index.html'
+          cmd_options: '-r report.html'
           target: 'https://portal.int.demo.catena-x.net/'
         # or this for an api scan
         #uses: zaproxy/action-api-scan@v0.4.0
