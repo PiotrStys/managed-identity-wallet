@@ -25,11 +25,11 @@ jobs:
           ref: main
       - name: ZAP Scan
         #use this for a full dast scan
-        uses: zaproxy/action-full-scan@v0.5.1
+        uses: zaproxy/action-full-scan@v0.8.0
         with:
           token: ${{ secrets.GH_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
-          cmd_options: '-r report.html'
+          #cmd_options: '-r report.html'
           target: 'https://portal.int.demo.catena-x.net/'
         #or this for an api scan
         #uses: zaproxy/action-api-scan@v0.5.0
